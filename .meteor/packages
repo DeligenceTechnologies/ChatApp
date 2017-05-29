@@ -22,7 +22,7 @@ shell-server@0.2.3            # Server-side component of the `meteor shell` comm
 
 
 
-saranshdev:chatting
+deligencetechnologies:chatting
 accounts-base
 kadira:flow-router
 twbs:bootstrap@3.3.6

@@ -1,8 +1,8 @@
-# Mr-Text : Chatting 1.0
+# ChatApp : Chatting 1.0
 
-Chatting for Mr-Text. To install Chatting layout in your Mr-Text App, Hit the following command :-
+Chatting for ChatApp. To install Chatting layout in your ChatApp App, Hit the following command :-
 
-`meteor add saranshdev:chatting`
+`meteor add deligencetechnologies:chatting`
 
 and add below router in your app 
 

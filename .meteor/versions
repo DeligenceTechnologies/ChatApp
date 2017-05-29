@@ -38,6 +38,7 @@ ddp-client@1.3.4
 ddp-common@1.2.8
 ddp-rate-limiter@1.0.7
 ddp-server@1.3.14
+deligencetechnologies:chatting@0.0.1
 deps@1.0.12
 diff-sequence@1.0.7
 ecmascript@0.7.3
@@ -89,7 +90,6 @@ reactive-var@1.0.11
 reload@1.1.11
 retry@1.0.9
 routepolicy@1.0.12
-saranshdev:chatting@0.1.4
 service-configuration@1.0.11
 session@1.1.7
 sha@1.0.9
