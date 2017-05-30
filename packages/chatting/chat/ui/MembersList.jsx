@@ -75,7 +75,6 @@ class MembersList extends Component{
 		}
 	}
 	render(){
-	  	var count = Conversation.find({receiver: Meteor.userId(), sender:this.props.member._id, seen: false}).count();
 	  	return(
 	   		
     		<div className="row sideBar-body" key={this.props.member._id} onClick={()=>{this.startChat(this.props.member._id)}}>
@@ -103,11 +102,6 @@ class MembersList extends Component{
 	                    	
 		                    	
 	                    </div>
-	                    <div className="col-sm-4 col-xs-4 pull-right sideBar-time">
-        					<span className="time-meta pull-right">
-        						{count != 0 ?<span className="badge"> {count} </span> :""} 
-      						</span>
-      					</div>
 		            </div>
 		            {
                 		!this.props.newChat?
@@ -135,7 +129,6 @@ export default createContainer((data) => {
   	return {
   		isReady: handle.ready(),
   		images: user && data.member.profile.image?Images.find({_id:data.member.profile.image}).fetch():[],
-  		online: Online.find().fetch(),
-  		count:Conversation.find({receiver: Meteor.userId(), sender:data.member._id, seen: false}).count()
+  		online: Online.find().fetch()
   	}
 },MembersList);
