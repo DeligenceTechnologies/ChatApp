@@ -220,25 +220,10 @@ class ConversationPage extends Component{
                                                 }
                                             </div>
                                         </div>
-                                        {/*<div className="col-sm-1 col-xs-1  heading-dot  pull-right">
-                                             <i className="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
-                                        </div>*/}
                                         <div className="col-sm-3 col-xs-3 heading-compose  pull-right" onClick={()=>{this.openModal()}}>
                                             <i className="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
                                         </div>
                                     </div>
-                                     
-
-
-                                   {/* <div className="row searchBox">
-                                        <div className="col-sm-12 searchBox-inner">
-                                            <div className="form-group has-feedback">
-                                                <input id="searchText" type="text" className="form-control" name="searchText" placeholder="Search" />
-                                                <span className="glyphicon glyphicon-search form-control-feedback"></span>
-                                            </div>
-                                        </div>
-                                    </div>*/}
-                                      
                                     <Member chat={this.props.chatList} activeUser={this.props.receiver && this.props.receiver._id?this.props.receiver._id:''}/>
                                 </div>
                             </div>
@@ -263,25 +248,6 @@ class ConversationPage extends Component{
                                                 </a>
                                                 {this.checkOnline(this.props.receiver)}
                                             </div>
-                                            {/*<div className="col-sm-1 col-xs-1  heading-dot pull-right">
-                                                <div className="dropdown" id="action">
-                                                    <button className="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={()=>{this.openDropDown()}}> 
-                                                        <i className="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
-                                                    </button>
-                                                    <ul className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                                                        <li onClick={()=>{this.enbaleEnter()}}>
-                                                            <a href="#">
-                                                                {
-                                                                    this.props.sender.profile.enbaleEnter?
-                                                                        'Disable enter as send'
-                                                                    :
-                                                                        'Enable enter as send'
-                                                                }
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>*/}
                                         </div>
 
                                         <FatchConversation receiverID={this.props.receiver ? this.props.receiver._id : ''} editMessage={this.editMessage.bind(this)} />      
@@ -417,8 +383,6 @@ export default createContainer((data) => {
       receiver: user.length!=0?Meteor.users.findOne({_id: user[0]._id}):null,
       sender:sender?sender:null,
       chatList: userList.length!=0?userList:[],
-      users:Meteor.users.find({"_id":{$ne:Meteor.userId()}}),
-      // edit: Session.get('chatId')?Conversation.findOne({_id:Session.get('chatId')}):null,
-      /*unReadMessage: Conversation.find({receiverId : Meteor.userId(), senderId: user[0]._id, seen:false}).count() : 0*/
+      users:Meteor.users.find({"_id":{$ne:Meteor.userId()}})
     }
 },ConversationPage);
