@@ -35,22 +35,6 @@ if(Meteor.isServer){
         },
 
 
-/*----------- Remove Chat Message-------------*/
-
-        removeMessage: function(id,message) {
-            try{
-                Conversation.update({_id:id},{
-                    $set:{
-                        message:message,
-                        remove:true
-                    }
-                });
-               return true;
-            }catch(e){
-                console.log("error in send_Message => ",e)
-                return false;
-            }
-        },
 
 
 /*------------- Seen Message  -------------*/        

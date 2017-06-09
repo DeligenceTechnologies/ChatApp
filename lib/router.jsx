@@ -51,7 +51,6 @@ appRoute.route('/conversation', {
 	name: 'ConversationLayout',
 	action() {
 		mount(Header, {content: <Home />});
-
 	}
 });
 
@@ -61,8 +60,6 @@ appRoute.route('/conversation/:id', {
 		mount(Header, {content: <Home id={params.id} />});
 	}
 });
-
-
 
 
 if(Meteor.isClient){

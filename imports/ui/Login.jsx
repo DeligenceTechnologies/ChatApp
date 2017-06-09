@@ -41,7 +41,7 @@ export default class Login extends Component{
 						  	<div className="group">
 						   		<input type="email" className="used" ref="email" required />
 						   		<span className="highlight"></span>
-						   		<label>Username</label>
+						   		<label>Email Id</label>
 						  	</div>
 						  	<div className="group">
 						   		<input type="password" className="used" ref="password" required/>

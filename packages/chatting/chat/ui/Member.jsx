@@ -7,13 +7,14 @@ import MembersList from './MembersList.jsx';
 
 class Member extends Component{
     startChat(e){
-  	     // FlowRouter.go('Conversation',{id:e.target.attributes['data-id'].nodeValue})
+        // FlowRouter.go('Conversation',{id:e.target.attributes['data-id'].nodeValue})
     }
 	render() {
+        // console.log("==>>", this.props.chat.length)
         return(
-            <div className="row sideBar" >
+            <div className="row sideBar">
                 {
-                    this.props.chat.length != 0?
+                    this.props.chat.length != 0 ?
                         this.props.chat.map((member)=>{
                             return(
                                 <MembersList key={ member._id } member = { member } newChat={false} />

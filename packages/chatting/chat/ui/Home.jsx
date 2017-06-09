@@ -11,18 +11,11 @@ var createReactClass = require('create-react-class');
 
 Home = createReactClass({
 	componentDidMount(){
-
-        require('../../imports/js/jquery-1.12.4.min.js');
-		// $(window).load(function(){
-		//   $(".preloader-bg").fadeOut('slow');
-		//   $('body').delay(350).css({'overflow':'visible'});
-		// });
+		require('../../imports/js/jquery-1.12.4.min.js');
 	},
 	render(){
 		return(
-				<ConversationPage uid={this.props.id?this.props.id:''} />
-				
-			
+			<ConversationPage uid={this.props.id?this.props.id:''} />			
 		);
 	}
 });

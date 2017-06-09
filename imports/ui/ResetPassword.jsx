@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 
 /* Home Page */
 
-export default class ResetPassword extends Component{
+export default class ResetPassword extends Component {
 	resetPassword(event){
 		event.preventDefault();
 		let email = this.refs.email.value;
@@ -43,7 +43,7 @@ export default class ResetPassword extends Component{
 						  	message: 'Reset link send to your email address',
 						  	type: 'success-msg',
 						  	style: 'growl-top-right',
-						  	icon: 'fa-check '
+						  	icon: 'fa-check'
 						});
 						// Bert.alert(" Reset link send to your email address ","info", "growl-top-right");
 						FlowRouter.go('/');
@@ -51,7 +51,6 @@ export default class ResetPassword extends Component{
 				})
 			}
 		})
-		
 	}
 	backPage(){
 		FlowRouter.go('/');
@@ -80,8 +79,7 @@ export default class ResetPassword extends Component{
 							  	<div className="col-sm-2"></div>
 							  	<a href="/" className="buttonui col-sm-5"> <span> Cancel </span> </a>
 						  	</div>
-						</form>
-							
+						</form>							
 					</div>
 				</div> 
 			</section>

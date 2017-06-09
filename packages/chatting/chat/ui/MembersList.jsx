@@ -10,13 +10,13 @@ import {DefaultData} from '../../imports/collections/DefaultData.js';
 
 class MembersList extends Component{
 	startChat(id){
-	  	Meteor.call("messageSeen",Meteor.userId(),id);
+	  	Meteor.call("messageSeen", Meteor.userId(), id);
 	  	
 	  	$('.side').addClass('conv-mobile');
 	  	$('.conversation').removeClass('conv-mobile')
 	  	if(this.props.newChat){
-	  		$('#myModal').modal('hide');
-        	$('#myModal').css('display','none');
+			$('#myModal').modal('hide');
+			$('#myModal').css('display','none');
 	  	}
 	  	FlowRouter.go('Conversation',{id:id});
 	  	//FlowRouter.setParams({id:e.target.attributes['data-id'].nodeValue});
@@ -58,16 +58,14 @@ class MembersList extends Component{
 		if(Conversation.find({$or: [{senderId: Meteor.userId(), receiverId: this.props.member._id},{senderId: this.props.member._id, receiverId: Meteor.userId()}], remove: { $exists: true, $eq:false}}).count() != 0 ){
 			let lastMessage = Conversation.findOne({$or: [{senderId: Meteor.userId(), receiverId: this.props.member._id},{senderId: this.props.member._id, receiverId: Meteor.userId()}], remove: { $exists: true, $eq:false}},{sort:{time: -1},limit: 1});
 			let messsageShow = "";
-			if (lastMessage.message.length > 25)
-	  			messsageShow = lastMessage.message.substring(0,25)+'...';
+			if (lastMessage.message.length > 10)
+	  			messsageShow = lastMessage.message.substring(0,10)+'...';
 	  		else
 	  			messsageShow = lastMessage.message;
-			
-			let date = new Date(lastMessage.time);
 				
 			return(
 				<p className="pull-right">
-					{lastMessage.senderId == Meteor.userId() ? "YOU:  " + messsageShow : messsageShow}
+					{lastMessage.senderId == Meteor.userId() ? "YOU: " + messsageShow : messsageShow}
 				</p>
 			)
 		}else{
@@ -75,17 +73,19 @@ class MembersList extends Component{
 		}
 	}
 	render(){
-	  	return(
-	   		
+		if(Conversation.find({$or: [{senderId: Meteor.userId(), receiverId: this.props.member._id},{senderId: this.props.member._id, receiverId: Meteor.userId()}], remove: { $exists: true, $eq:false}}).count() != 0){
+			var lastMessage = Conversation.findOne({$or: [{senderId: Meteor.userId(), receiverId: this.props.member._id},{senderId: this.props.member._id, receiverId: Meteor.userId()}], remove: { $exists: true, $eq:false}},{sort:{time: -1},limit: 1});
+			var date = new Date(lastMessage.time);
+		}
+	  	return(	   		
     		<div className="row sideBar-body" key={this.props.member._id} onClick={()=>{this.startChat(this.props.member._id)}}>
       			<div className="col-sm-2 col-xs-2 sideBar-avatar">
         			<div className="avatar-icon">
-
         				{ 
-		      				this.props.member.profile.image ? 
+		      				this.props.member.profile.image ?
 		        				this.props.images.map((img)=>{
 			          				return (
-			            				<img data-id={this.props.member._id} key={img._id} src={img.url()} className=" pull-left round" id="memImage" alt={this.props.member.profile.name} data-id={this.props.member._id} />
+			            				<img data-id={this.props.member._id} key={img._id} src={img.url()} className=" pull-left round" id="memImage" alt={this.props.member.profile.name} />
 			          				)
 		        				})
 		        			:
@@ -97,20 +97,25 @@ class MembersList extends Component{
 	                <div className="row">
 	                	<div className="col-sm-8 col-xs-8 sideBar-name">
 	                    	<span className="name-meta">
-	                    		{this.props.member.profile.name}
+	                    		&nbsp;{this.props.member.profile.name}
 	                    	</span>
-	                    	
-		                    	
+	                    </div>
+	                    <div className="last-msg-time pull-right">
+	                    	{
+	                    		!this.props.newChat ?
+	                    			date.getDate() == new Date().getDate() ? date.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true }) : date.toString().substring(4,15)
+	                    		: ''
+	                    	}
 	                    </div>
 		            </div>
 		            {
-                		!this.props.newChat?
+                		!this.props.newChat ?
                 			this.checkOnline(this.props.member)
                 		:
                 			''
                 	}
 		            {
-                		!this.props.newChat?
+                		!this.props.newChat ?
             				this.lastMessageDisplay()
             			:
             				''

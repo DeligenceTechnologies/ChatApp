@@ -21,30 +21,11 @@ export default class Header extends Component{
 		})
 	}
 	componentDidMount(){
-
         require('../js/jquery-1.12.4.min.js');
-		// $(window).load(function(){
-		//   $(".preloader-bg").fadeOut('slow');
-		//   $('body').delay(350).css({'overflow':'visible'});
-		// });
-	}
+    }
 	render(){
-		console.log(this.props.content)
 		return(
 			<div className="wrapper">
-
-				{/*<div className="preloader-bg">
-			        <div className="preloader_inner">
-			            <div className="thecube">
-			              <div className="cube c1"></div>
-			              <div className="cube c2"></div>
-			              <div className="cube c4"></div>
-			              <div className="cube c3"></div>
-			            </div>
-			        </div>
-			    </div>*/}
-
-
 				<header className="header">
 			      	<div className="container">
 			        	<div className="pull-left">
@@ -56,15 +37,10 @@ export default class Header extends Component{
 			           		<div className="navigation">
 				             	<ul>
 				                 	<li onClick={(()=>this.headerPage('conversation'))} id="conversation" >
-										<a className="headerTab" style={{'outline': 'medium none'}}>Chat</a>
+										<a className="headerTab" style={{'outline': 'medium none', 'cursor':'pointer'}}>Chat</a>
 									</li>
-									
-									<li onClick={(()=>this.headerPage('profile'))} id="profile" >
-										<a className="headerTab" style={{'outline': 'medium none'}}>Profile</a>
-									</li>
-									
 									<li onClick={(()=>this.logoutUser())} className="">
-										<a className="headerTab" style={{'outline': 'medium none'}}>Logout</a>
+										<a className="headerTab" style={{'outline': 'medium none', 'cursor':'pointer'}}>Logout</a>
 									</li>
 				             	</ul>
 			           		</div>
@@ -72,8 +48,8 @@ export default class Header extends Component{
 			      	</div>
 			    </header>
 
-
 			    {this.props.content}
+			
 			</div>
 		);
 	}

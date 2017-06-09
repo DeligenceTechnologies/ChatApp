@@ -7,13 +7,6 @@ import {Images} from '../imports/collections/Images.js';
 import {DefaultData} from '../imports/collections/DefaultData.js';
 
 
-Meteor.startup(function() {
-	DefaultData.insert({
-		"name" : "Chatting",
-		"packageName": "saransh:chatting",
-		"defaultImage": "public/user.png",
-	})
-});
 
 Meteor.publish('user', function (id) {
     return Meteor.users.find({_id:id});
