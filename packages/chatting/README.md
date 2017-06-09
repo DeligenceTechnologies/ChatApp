@@ -1,4 +1,4 @@
-# ChatApp : Chatting 1.0
+# ChatApp : Chatting 1.1
 
 Chatting for ChatApp. To install Chatting layout in your ChatApp App, Hit the following command :-
 
