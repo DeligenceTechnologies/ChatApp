@@ -1,4 +1,4 @@
-# ChatApp 1.0
+# ChatApp 1.1
 
 ## Installation Method - 1
 - Create a meteor application using `meteor create ChatApp`
@@ -23,4 +23,3 @@
 
 ## Features
 - Chatting Layout
-
